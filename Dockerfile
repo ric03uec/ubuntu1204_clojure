@@ -1,13 +1,14 @@
 FROM shippableimages/ubuntu1204_base:0.0.3
 
-RUN apt-get update && apt-get install -y \
-    wget;
-
+# lein needs java to execute
 RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections;
 RUN echo "debconf shared/accepted-oracle-license-v1-1 seen true" | debconf-set-selections;
 RUN add-apt-repository ppa:webupd8team/java;
 RUN apt-get update &&  apt-get install -y \
     oracle-java7-installer;
+
+RUN apt-get update && apt-get install -y \
+    wget;
 
 RUN cd /tmp && \
     wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein;
