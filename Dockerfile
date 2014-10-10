@@ -16,7 +16,10 @@ RUN cd /tmp && \
 RUN chmod +x /tmp/lein
 RUN cp -vr /tmp/lein /usr/local/bin/lein2
 
+# supress warnings about lein running as root
 ENV LEIN_ROOT true
+
+# download and use latest lein
 RUN /bin/bash lein2
 
 CMD ["lein2"]
