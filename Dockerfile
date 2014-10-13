@@ -21,5 +21,6 @@ ENV LEIN_ROOT true
 
 # download and use latest lein
 RUN /bin/bash lein2
+RUN ln -sf /usr/local/bin/lein2 /usr/local/bin/lein
 
 CMD ["lein2"]
